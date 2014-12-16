@@ -1,36 +1,20 @@
 # peterscraper
 
-FIXME: description
+Scraping websites with clj-http and enlive for fun and no profit. Especially sites that need awkward POST submissions
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Clone via git
 
 ## Usage
 
-FIXME: explanation
+Mostly I play with it in the REPL in the scraper namespace, so the following won't do much...
 
     $ java -jar peterscraper-0.1.0-standalone.jar [args]
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 Oliver Mooney
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
