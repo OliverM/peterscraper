@@ -43,11 +43,14 @@
                   :textomodalidad  "Todas"
                   })
 
-(defn post-params-test
+(def post-params-test
   (client/post "https://www.educacion.gob.es/centros/saccen.do"
                                     {:insecure?   true
                                      :form-params post-params}))
 
-(def test-snippet (post-params-test))
+(def test-snippet ((-> post-params-test
+                       :body
+                       html/html-snippet
+                       )))
 
-(html/select testsnippet [:li])
+(html/select test-snippet [:li])
