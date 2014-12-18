@@ -10,8 +10,8 @@
                   :codaut          "00"
                   :tipoOperacion   nil
                   :codprov         "00"
-                  :codcen          "04000018"
-                  :codcen2         "04000018"
+                  :codcen          "04000021"
+                  :codcen2         "04000021"
                   :denomiespe      nil
                   :ssel_natur      "0"
                   :sconcerta       "0"
@@ -48,10 +48,10 @@
                                     {:insecure?   true
                                      :form-params post-params}))
 
-(def test-snippet ((-> post-params-test
+(def test-snippet (-> post-params-test
                        :body
                        html/html-snippet
-                       )))
+                       ))
 
 (html/select test-snippet [:li])
 
