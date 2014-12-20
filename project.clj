@@ -7,7 +7,7 @@
                  [enlive "1.1.5"]
                  [aprint "0.1.1"]
                  [clj-http "1.0.1"]
-                 [aprint "0.1.1"]
+                 [org.clojure/data.csv "0.1.2"]
                  ]
   :main ^:skip-aot peterscraper.core
   :target-path "target/%s"

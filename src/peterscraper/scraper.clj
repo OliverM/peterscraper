@@ -2,6 +2,8 @@
   (:require [peterscraper.ids :as i]
             [net.cgrand.enlive-html :as html]
             [clj-http.client :as client]
+            [clojure.data.csv :as csv]
+            [clojure.java.io :as io]
             [aprint.core :refer :all]))
 
 (def post-params {:simostrar       "no"
@@ -47,8 +49,8 @@
   (:body (client/post "https://www.educacion.gob.es/centros/saccen.do"
                       {:insecure?   true
                        :form-params (merge post-params
-                                           {:codecen  id
-                                            :codecen2 id})})))
+                                           {:codcen  id
+                                            :codcen2 id})})))
 
 (defn get-centre-info
   "Parses a centre's webpage to extract the desired fields"
@@ -61,3 +63,12 @@
         values (map f li)]
     (zipmap captions values)))
 
+
+(defn nyom
+  "A not-particularly-clever attempt to pull down the desired info"
+  []
+  (let [schools (map (comp get-centre-info get-centre-html) i/codcen-ids)
+        headers (keys (first schools))
+        rows (map vals schools)]
+    (with-open [out (io/writer "output.csv")]
+      (csv/write-csv out (cons headers rows)))))
