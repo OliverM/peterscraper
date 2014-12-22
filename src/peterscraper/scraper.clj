@@ -60,8 +60,11 @@
                (html/select [:li]))
         li (filter f li)
         captions (apply concat (map (comp :content first :content) li))
-        values (map f li)]
-    (zipmap captions values)))
+        values (map f li)
+        hrefs (map (comp :href :attrs) (html/select li [(html/attr-has :href)]))]
+    (-> (zipmap captions values)
+        (merge {"email" (first hrefs)
+                "website" (second hrefs)}))))
 
 
 (defn nyom
